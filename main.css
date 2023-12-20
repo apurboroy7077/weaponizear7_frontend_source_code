@@ -1,0 +1,65 @@
+.slick-slide {
+  transform: scale(0.8);
+  transition: all 0.5s ease-in-out;
+  padding: 40px 0;
+}
+.slick-slide img {
+  width: 100%;
+  transition: all 0.5s ease-in-out;
+  border: 2px solid white;
+  border-radius: 5px;
+  box-shadow: 3px 3px 3px black;
+}
+.slick-center {
+  transform: scale(1.1);
+  height: fit-content;
+}
+.slick-center img {
+  box-shadow: 5px 5px 5px black;
+}
+.weaponCard {
+  width: 18rem;
+  height: 26rem;
+  box-shadow: 5px 5px 5px black;
+}
+.cardImage {
+  height: 13rem;
+  object-fit: cover;
+  width: 100%;
+}
+.weaponCardButton {
+  margin-top: 1rem;
+}
+@media (max-width: 1000px) and (min-width: 0px) {
+  .weaponCard {
+    width: 6rem;
+    height: 9rem;
+  }
+  .cardImage {
+    object-fit: cover;
+    width: 100%;
+    height: 3rem;
+  }
+  .weaponCardBody {
+    padding: 2px 5px;
+  }
+  .weaponCardTitle {
+    font-size: 0.5rem;
+    margin: 2px 0;
+    padding: 0;
+  }
+  .weaponCardDescription {
+    font-size: 0.4rem;
+    margin: 2px 0;
+    padding: 0;
+  }
+  .weaponCardSubtitle {
+    font-size: 0.5rem;
+    margin: 2px 0;
+    padding: 0;
+  }
+  .weaponCardButton {
+    font-size: 0.3rem;
+    margin: 0;
+  }
+}
