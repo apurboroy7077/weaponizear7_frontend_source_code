@@ -46,6 +46,17 @@ let MyNavbar = () => {
         .catch((error) => {
           console.log(error);
         });
+      axios
+        .post(`${serverURL}/api/product/get_products_selled_by_user`)
+        .then((response) => {
+          dispatch({
+            type: "ADD_PRODUCTS_SELLED_BY_USERS",
+            payload: response.data.productsData,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
     let savedCartData = JSON.parse(localStorage.getItem("WeaponizeAR7_Cart"));
     if (savedCartData) {

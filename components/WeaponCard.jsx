@@ -7,7 +7,8 @@ import tickMark from "../public/icons/tickmark.png";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 let WeaponCard = (props) => {
-  let { name, description, price } = props.data;
+  let { name, description, price, isGettingSelledByUser } = props.data;
+
   let cartData = useSelector((state) => state.cartData);
   let userData = useSelector((state) => state.userData);
   let isExists = false;
@@ -28,7 +29,7 @@ let WeaponCard = (props) => {
   let navigate = useNavigate();
   return (
     <Card className="weaponCard">
-      <CardCarousel data={name} />
+      <CardCarousel data={{ name, isGettingSelledByUser }} />
       <Card.Body className="weaponCardBody">
         <Card.Title className="weaponCardTitle">{name}</Card.Title>
         <Card.Text className="weaponCardDescription">{description}</Card.Text>

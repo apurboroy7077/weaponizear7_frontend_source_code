@@ -33,7 +33,7 @@
 @media (max-width: 1000px) and (min-width: 0px) {
   .weaponCard {
     width: 6rem;
-    height: 9rem;
+    height: fit-content;
   }
   .cardImage {
     object-fit: cover;

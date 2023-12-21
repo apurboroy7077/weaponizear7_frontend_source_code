@@ -135,6 +135,22 @@ let reducer = (state = initialState, action) => {
       cartData: action.payload,
     };
     return newState;
+  } else if (action.type == "ADD_PRODUCTS_SELLED_BY_USERS") {
+    let oldProducts = [...initialState.productData];
+    let newProducts = [...action.payload];
+    let newProducts_ = [];
+    for (let i = 0; i < newProducts.length; i++) {
+      let product = newProducts[i];
+      let myproduct = { ...product, isGettingSelledByUser: true };
+      newProducts_.push(myproduct);
+    }
+    console.log(newProducts_);
+    let newTotalProducts = [...oldProducts, ...newProducts_];
+    let newState = {
+      ...state,
+      productData: newTotalProducts,
+    };
+    return newState;
   } else {
     return state;
   }
