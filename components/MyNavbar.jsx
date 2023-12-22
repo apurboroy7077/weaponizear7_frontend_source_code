@@ -149,7 +149,7 @@ let MyNavbar = () => {
                 Admin Panel <i className="fa-solid fa-person-military-rifle" />
               </Link>
             )}
-            <NavDropdown title="Link" id="navbarScrollingDropdown">
+            {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
                 Another action
@@ -161,7 +161,7 @@ let MyNavbar = () => {
             </NavDropdown>
             <Nav.Link href="#" disabled>
               Link
-            </Nav.Link>
+            </Nav.Link> */}
             {userData && (
               <Link
                 className="nav-link"

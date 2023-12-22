@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import image1 from "./../public/images/products/akm_1.jpg";
-import hitler from "./../public/images/quotes/hitler.jpg";
+import hitlerQuote from "./../public/images/quotes/hitler.jpg";
+import stalinQuote from "./../public/images/quotes/stalin.jpg";
+import kimQuote from "./../public/images/quotes/kim_jong_un.jpg";
+import putinQuote from "./../public/images/quotes/putin.jpg";
+import gaddafiQuote from "./../public/images/quotes/gaddafi.jpg";
 export default class CenterMode extends Component {
   render() {
     const settings = {
@@ -38,19 +41,19 @@ export default class CenterMode extends Component {
         <div>
           <Slider {...settings}>
             <div>
-              <img src="/src/Apps2/A6_Gun_Shop/public/images/quotes/hitler.jpg" />
+              <img src={hitlerQuote} />
             </div>
             <div>
-              <img src="/src/Apps2/A6_Gun_Shop/public/images/quotes/stalin.jpg" />
+              <img src={stalinQuote} />
             </div>
             <div>
-              <img src="/src/Apps2/A6_Gun_Shop/public/images/quotes/kim_jong_un.jpg" />
+              <img src={kimQuote} />
             </div>
             <div>
-              <img src="/src/Apps2/A6_Gun_Shop/public/images/quotes/putin.jpg" />
+              <img src={putinQuote} />
             </div>
             <div>
-              <img src="/src/Apps2/A6_Gun_Shop/public/images/quotes/gaddafi.jpg" />
+              <img src={gaddafiQuote} />
             </div>
           </Slider>
         </div>
