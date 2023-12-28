@@ -25,19 +25,13 @@ export default class CenterMode extends Component {
     };
 
     return (
-      <>
-        <p
-          style={{
-            color: "white",
-            padding: "0",
-            margin: "0",
-            textAlign: "center",
-            fontSize: "1.5rem",
-            marginTop: "5rem",
-          }}
-        >
-          Our Satisfied Customers
-        </p>
+      <div
+        className="customer_review_div"
+        style={{
+          maxWidth: "85%",
+        }}
+      >
+        <p className="satisfied_customer_text">Our Satisfied Customers</p>
         <div>
           <Slider {...settings}>
             <div>
@@ -57,7 +51,7 @@ export default class CenterMode extends Component {
             </div>
           </Slider>
         </div>
-      </>
+      </div>
     );
   }
 }

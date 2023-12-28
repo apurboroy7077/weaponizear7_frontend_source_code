@@ -8,16 +8,7 @@ const CardContainer = () => {
   let search = useSelector((state) => state.search);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: "2rem",
-        margin: "1rem",
-      }}
-    >
+    <div className="weaponCardContainer">
       {cartData.map((data) => {
         let name = data.name.toLowerCase();
         let mySearch = search.toLowerCase();

@@ -18,6 +18,7 @@ let MyNavbar = () => {
   let dispatch = useDispatch();
   let userData = useSelector((state) => state.userData);
   let cartData = useSelector((state) => state.cartData);
+  let wishList = useSelector((state) => state.wishList);
   let handleSearch = (e) => {
     e.preventDefault();
     let searchValue = e.target.value;
@@ -60,18 +61,33 @@ let MyNavbar = () => {
     }
     let savedCartData = JSON.parse(localStorage.getItem("WeaponizeAR7_Cart"));
     if (savedCartData) {
-      dispatch({
-        type: "ADD_SAVED_CART_DATA",
-        payload: savedCartData,
-      });
+      if (savedCartData.length > 0) {
+        dispatch({
+          type: "ADD_SAVED_CART_DATA",
+          payload: savedCartData,
+        });
+      }
     }
   }, []);
 
   useEffect(() => {
-    if (cartData.length > 0) {
-      localStorage.setItem("WeaponizeAR7_Cart", JSON.stringify(cartData));
-    }
+    localStorage.setItem("WeaponizeAR7_Cart", JSON.stringify(cartData));
   }, [cartData]);
+  useEffect(() => {
+    let isWishList = JSON.parse(localStorage.getItem("WEAPONIZEAR7_WISHLIST"));
+    if (isWishList) {
+      if (isWishList.length > 0) {
+        dispatch({
+          type: "SET_WISHLIST",
+          payload: isWishList,
+        });
+      }
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("WEAPONIZEAR7_WISHLIST", JSON.stringify(wishList));
+  }, [wishList]);
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <ToastContainer />
@@ -119,6 +135,16 @@ let MyNavbar = () => {
               >
                 Cart({cartData.length})
                 <i className="fa-solid fa-cart-shopping fa-beat" />
+              </Link>
+            )}
+            {userData && (
+              <Link
+                className="nav-link"
+                to="/wishlist"
+                style={{ textDecoration: "none", color: "initial" }}
+              >
+                Wishlist({wishList.length})
+                <i className="fa-regular fa-heart fa-beat" />
               </Link>
             )}
             {userData && (
