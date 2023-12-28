@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { serverURL } from "../config/Variables";
 import ar7id from "ar7id";
+import { ToastContainer, toast } from "react-toastify";
 
 const AdminPanel = () => {
   let [totalUsers, setTotalUsers] = useState(0);
@@ -51,21 +52,24 @@ const AdminPanel = () => {
   };
   let handleBanUser = (userEmail) => {
     setTargetedEmail(userEmail);
-    setBanning(true);
-    axios
-      .post(`${serverURL}/api/admin/ban_user`, { email: userEmail })
-      .then((res) => {
-        console.log(res);
-        let foundUsers_ = [...foundUser];
-        let user = foundUsers_.filter((data) => data.email == userEmail);
-        user[0].isBanned = true;
-        setFoundUser(foundUsers_);
-        setBanning(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setBanning(false);
-      });
+    // setBanning(true);
+    // axios
+    //   .post(`${serverURL}/api/admin/ban_user`, { email: userEmail })
+    //   .then((res) => {
+    //     console.log(res);
+    //     let foundUsers_ = [...foundUser];
+    //     let user = foundUsers_.filter((data) => data.email == userEmail);
+    //     user[0].isBanned = true;
+    //     setFoundUser(foundUsers_);
+    //     setBanning(false);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //     setBanning(false);
+    //   });
+    toast(
+      "Ban function is Currently Disabled because Admin Panel is currently Opened for Everyone."
+    );
   };
   let handleUnbanUser = (userEmail) => {
     setUnbanning(true);
@@ -104,6 +108,7 @@ const AdminPanel = () => {
         backgroundColor: "#333",
       }}
     >
+      <ToastContainer />
       <div>
         <h3>
           Total Users: {!loadingTotalUsers && <>{totalUsers}</>}{" "}

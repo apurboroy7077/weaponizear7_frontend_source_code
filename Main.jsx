@@ -14,10 +14,18 @@ import "react-toastify/dist/ReactToastify.css";
 import OrderHistoryPage from "./screens/OrderHistoryPage";
 import Banned from "./screens/Banned";
 import UploadProductPage from "./screens/UploadProductPage";
+import ProductDetailsPage from "./screens/ProductDetailsPage";
+import WishlistPage from "./screens/WishlistPage";
 const Main = () => {
   return (
     <Provider store={myStore}>
-      <div style={{ backgroundColor: "#1c1c1c", minHeight: "100vh" }}>
+      <div
+        style={{
+          backgroundColor: "#1c1c1c",
+          minHeight: "100vh",
+          Width: "100%",
+        }}
+      >
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Homepage />} />
@@ -29,6 +37,8 @@ const Main = () => {
             <Route path="/orderhistory" element={<OrderHistoryPage />} />
             <Route path="/banned" element={<Banned />} />
             <Route path="/uploadproduct" element={<UploadProductPage />} />
+            <Route path="/product_details" element={<ProductDetailsPage />} />
+            <Route path="/wishlist" element={<WishlistPage />} />
           </Routes>
         </BrowserRouter>
       </div>

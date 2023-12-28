@@ -4,6 +4,7 @@ let initialState = {
   userData: null,
   cartData: [],
   search: "",
+  selectedProduct: "",
   customerOrders: [
     { name: "m416", quantity: 3 },
     { name: "akm", quantity: 5 },
@@ -68,6 +69,7 @@ let initialState = {
       description: "Semi-Automatic Rifle, Good for Long Range.",
     },
   ],
+  wishList: [],
 };
 let reducer = (state = initialState, action) => {
   if (action.type == "LOGIN") {
@@ -84,6 +86,7 @@ let reducer = (state = initialState, action) => {
     };
     return newState;
   } else if (action.type == "ADD_TO_CART") {
+    console.log(action.payload);
     let myCart = [...state.cartData];
     let addedItem = action.payload;
     addedItem = { ...addedItem, quantity: 1 };
@@ -133,6 +136,55 @@ let reducer = (state = initialState, action) => {
     let newState = {
       ...state,
       cartData: action.payload,
+    };
+    return newState;
+  } else if (action.type == "ADD_PRODUCTS_SELLED_BY_USERS") {
+    let oldProducts = [...initialState.productData];
+    let newProducts = [...action.payload];
+    let newProducts_ = [];
+    for (let i = 0; i < newProducts.length; i++) {
+      let product = newProducts[i];
+      let myproduct = { ...product, isGettingSelledByUser: true };
+      newProducts_.push(myproduct);
+    }
+
+    let newTotalProducts = [...oldProducts, ...newProducts_];
+    let newState = {
+      ...state,
+      productData: newTotalProducts,
+    };
+    return newState;
+  } else if (action.type == "CHANGE_SELECTED_PRODUCT") {
+    let newState = {
+      ...state,
+      selectedProduct: action.payload,
+    };
+    return newState;
+  } else if (action.type == "ADD_TO_WISHLIST") {
+    let myWishlist = [...state.wishList];
+    let wishItem = action.payload;
+    if (myWishlist.includes(wishItem)) {
+      console.log("This Item Already Exists.");
+    } else {
+      myWishlist.push(wishItem);
+    }
+    let newState = {
+      ...state,
+      wishList: myWishlist,
+    };
+    return newState;
+  } else if (action.type == "SET_WISHLIST") {
+    let newState = {
+      ...state,
+      wishList: action.payload,
+    };
+    return newState;
+  } else if (action.type == "REMOVE_FROM_WISHLIST") {
+    let myWishlist = [...state.wishList];
+    let newWishList = myWishlist.filter((name) => name != action.payload);
+    let newState = {
+      ...state,
+      wishList: newWishList,
     };
     return newState;
   } else {

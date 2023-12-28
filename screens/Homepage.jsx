@@ -14,7 +14,15 @@ const Homepage = () => {
       <main style={{ minHeight: "100vh" }}>
         <MyCarousel />
         <CardContainer />
-        <CenterMode />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <CenterMode />
+        </div>
       </main>
       <footer>
         <MyFooter />

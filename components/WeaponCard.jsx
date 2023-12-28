@@ -5,9 +5,12 @@ import CardCarousel from "./CardCarousel";
 import { BsCheck } from "react-icons/bs";
 import tickMark from "../public/icons/tickmark.png";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+
 let WeaponCard = (props) => {
-  let { name, description, price } = props.data;
+  let { name, description, price, isGettingSelledByUser } = props.data;
+
   let cartData = useSelector((state) => state.cartData);
   let userData = useSelector((state) => state.userData);
   let isExists = false;
@@ -26,45 +29,57 @@ let WeaponCard = (props) => {
     });
   };
   let navigate = useNavigate();
+  let handleSeeProductDetails = () => {
+    localStorage.setItem("WEAPONIZEAR7_SELECTED_PRODUCT", name);
+    navigate("/product_details");
+  };
+
   return (
     <Card className="weaponCard">
-      <CardCarousel data={name} />
+      <CardCarousel data={{ name, isGettingSelledByUser }} />
       <Card.Body className="weaponCardBody">
         <Card.Title className="weaponCardTitle">{name}</Card.Title>
         <Card.Text className="weaponCardDescription">{description}</Card.Text>
         <Card.Subtitle className="weaponCardSubtitle">
           Price: {price}
         </Card.Subtitle>
-        {!isExists && userData && (
-          <Button
-            variant="primary"
-            style={{ marginTop: "1rem" }}
-            onClick={handleAddToCart}
-            className="weaponCardButton"
-          >
-            Add to Cart
-          </Button>
-        )}
-        {isExists && userData && (
-          <Button
-            variant="primary"
-            style={{ marginTop: "1rem" }}
-            className="weaponCardButton"
-          >
-            Added <i className="fa-regular fa-square-check fa-bounce" />
-          </Button>
-        )}
-        {!userData && (
-          <Button
-            variant="primary"
-            className="weaponCardButton"
-            onClick={() => {
-              navigate("/login");
-            }}
-          >
-            Login to Buy <i className="fa-solid fa-right-to-bracket" />
-          </Button>
-        )}
+        <div className="card_button_div">
+          {!isExists && userData && (
+            <Button
+              variant="primary"
+              style={{ marginTop: "1rem" }}
+              onClick={handleAddToCart}
+              className="weaponCardButton"
+            >
+              Add to Cart
+            </Button>
+          )}
+          {isExists && userData && (
+            <Button
+              variant="primary"
+              style={{ marginTop: "1rem" }}
+              className="weaponCardButton"
+            >
+              Added <i className="fa-regular fa-square-check fa-bounce" />
+            </Button>
+          )}
+          {!userData && (
+            <Button
+              variant="primary"
+              className="weaponCardButton"
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Login to Buy <i className="fa-solid fa-right-to-bracket" />
+            </Button>
+          )}
+
+          <i
+            className="fa-solid fa-circle-info details_icon"
+            onClick={handleSeeProductDetails}
+          />
+        </div>
       </Card.Body>
     </Card>
   );

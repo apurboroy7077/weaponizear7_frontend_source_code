@@ -18,6 +18,7 @@ let MyNavbar = () => {
   let dispatch = useDispatch();
   let userData = useSelector((state) => state.userData);
   let cartData = useSelector((state) => state.cartData);
+  let wishList = useSelector((state) => state.wishList);
   let handleSearch = (e) => {
     e.preventDefault();
     let searchValue = e.target.value;
@@ -46,21 +47,47 @@ let MyNavbar = () => {
         .catch((error) => {
           console.log(error);
         });
+      axios
+        .post(`${serverURL}/api/product/get_products_selled_by_user`)
+        .then((response) => {
+          dispatch({
+            type: "ADD_PRODUCTS_SELLED_BY_USERS",
+            payload: response.data.productsData,
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
     let savedCartData = JSON.parse(localStorage.getItem("WeaponizeAR7_Cart"));
     if (savedCartData) {
-      dispatch({
-        type: "ADD_SAVED_CART_DATA",
-        payload: savedCartData,
-      });
+      if (savedCartData.length > 0) {
+        dispatch({
+          type: "ADD_SAVED_CART_DATA",
+          payload: savedCartData,
+        });
+      }
     }
   }, []);
 
   useEffect(() => {
-    if (cartData.length > 0) {
-      localStorage.setItem("WeaponizeAR7_Cart", JSON.stringify(cartData));
-    }
+    localStorage.setItem("WeaponizeAR7_Cart", JSON.stringify(cartData));
   }, [cartData]);
+  useEffect(() => {
+    let isWishList = JSON.parse(localStorage.getItem("WEAPONIZEAR7_WISHLIST"));
+    if (isWishList) {
+      if (isWishList.length > 0) {
+        dispatch({
+          type: "SET_WISHLIST",
+          payload: isWishList,
+        });
+      }
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("WEAPONIZEAR7_WISHLIST", JSON.stringify(wishList));
+  }, [wishList]);
+
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
       <ToastContainer />
@@ -113,6 +140,16 @@ let MyNavbar = () => {
             {userData && (
               <Link
                 className="nav-link"
+                to="/wishlist"
+                style={{ textDecoration: "none", color: "initial" }}
+              >
+                Wishlist({wishList.length})
+                <i className="fa-regular fa-heart fa-beat" />
+              </Link>
+            )}
+            {userData && (
+              <Link
+                className="nav-link"
                 to="/uploadproduct"
                 style={{ textDecoration: "none", color: "initial" }}
               >
@@ -138,7 +175,7 @@ let MyNavbar = () => {
                 Admin Panel <i className="fa-solid fa-person-military-rifle" />
               </Link>
             )}
-            <NavDropdown title="Link" id="navbarScrollingDropdown">
+            {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
                 Another action
@@ -150,7 +187,7 @@ let MyNavbar = () => {
             </NavDropdown>
             <Nav.Link href="#" disabled>
               Link
-            </Nav.Link>
+            </Nav.Link> */}
             {userData && (
               <Link
                 className="nav-link"

@@ -5,10 +5,14 @@ import gun3Image from "./../public/images/home/gun3.jpg";
 import gun4Image from "./../public/images/home/gun4.jpg";
 import defaultImage from "./../public/images/products/default.jpg";
 import { useEffect, useState } from "react";
+import { serverURL } from "../config/Variables";
 
 let CardCarousel = (props) => {
-  let name = props.data.toLowerCase();
-
+  // let name = props.data.toLowerCase();
+  let { name } = props.data;
+  let { isGettingSelledByUser } = props.data;
+  let originalName = name;
+  name = name.toLowerCase();
   let [image1, setImage1] = useState(null);
   let [image2, setImage2] = useState(null);
   let [image3, setImage3] = useState(null);
@@ -40,9 +44,24 @@ let CardCarousel = (props) => {
   }, []);
   try {
   } catch (error) {}
+  let [imageError, setImageError] = useState(false);
   return (
     <Carousel indicators={false}>
-      {!image1 && !image2 && !image3 && !image4 && (
+      {isGettingSelledByUser && (
+        <Carousel.Item>
+          {!imageError && (
+            <img
+              src={`${serverURL}/images/products/${originalName}.jpg`}
+              className="cardImage"
+              onError={() => {
+                setImageError(true);
+              }}
+            />
+          )}
+          {imageError && <img src={defaultImage} className="cardImage" />}
+        </Carousel.Item>
+      )}
+      {!image1 && !image2 && !image3 && !image4 && !isGettingSelledByUser && (
         <Carousel.Item>
           <img src={defaultImage} className="cardImage" />
         </Carousel.Item>

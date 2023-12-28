@@ -137,6 +137,21 @@ let SignupForm = () => {
           </>
         )}
       </Button>
+      <button
+        style={{
+          backgroundColor: "transparent",
+          color: "white",
+          margin: "1rem",
+          border: "1px solid white",
+          padding: "0.5rem 1rem",
+          boxShadow: "5px 5px 5px black",
+        }}
+        onClick={() => {
+          navigate("/login");
+        }}
+      >
+        Already Have An Account?
+      </button>
     </Form>
   );
 };
