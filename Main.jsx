@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Homepage from "./screens/Homepage";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -17,6 +17,9 @@ import UploadProductPage from "./screens/UploadProductPage";
 import ProductDetailsPage from "./screens/ProductDetailsPage";
 import WishlistPage from "./screens/WishlistPage";
 const Main = () => {
+  useEffect(() => {
+    document.title = "WeaponizeAR7";
+  }, []);
   return (
     <Provider store={myStore}>
       <div
