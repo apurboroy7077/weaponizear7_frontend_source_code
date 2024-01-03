@@ -24,7 +24,11 @@ let Loginform = () => {
       .catch((error) => {
         setLogging(false);
         console.log(error);
-        toast(error.response.data.message);
+        try {
+          toast(error.response.data.message);
+        } catch (error) {
+          toast("Plz Check your Connection.");
+        }
       });
   };
   return (
