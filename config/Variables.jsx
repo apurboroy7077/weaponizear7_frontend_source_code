@@ -1,2 +1,2 @@
-let serverURL = "https://weaponize-ar7-backend.onrender.com";
+let serverURL = "http://localhost:3001";
 export { serverURL };

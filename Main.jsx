@@ -16,6 +16,7 @@ import Banned from "./screens/Banned";
 import UploadProductPage from "./screens/UploadProductPage";
 import ProductDetailsPage from "./screens/ProductDetailsPage";
 import WishlistPage from "./screens/WishlistPage";
+import OwnProducts from "./screens/OwnProducts";
 const Main = () => {
   useEffect(() => {
     document.title = "WeaponizeAR7";
@@ -42,6 +43,7 @@ const Main = () => {
             <Route path="/uploadproduct" element={<UploadProductPage />} />
             <Route path="/product_details" element={<ProductDetailsPage />} />
             <Route path="/wishlist" element={<WishlistPage />} />
+            <Route path="/own_products" element={<OwnProducts />} />
           </Routes>
         </BrowserRouter>
       </div>

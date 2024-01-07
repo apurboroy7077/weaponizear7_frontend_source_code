@@ -4,6 +4,7 @@ import MyFooter from "../components/MyFooter";
 import CardContainer from "../components/CardContainer";
 import MyCarousel from "../components/MyCarousel";
 import CenterMode from "../components/ReactSlick";
+import ProductPagesIndex from "../components/ProductPagesIndex";
 
 const Homepage = () => {
   return (
@@ -14,6 +15,7 @@ const Homepage = () => {
       <main style={{ minHeight: "100vh" }}>
         <MyCarousel />
         <CardContainer />
+        <ProductPagesIndex />
         <div
           style={{
             display: "flex",

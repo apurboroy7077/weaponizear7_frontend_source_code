@@ -1,0 +1,17 @@
+.product_pages_pagination_button_div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.product_pages_pagination_button_div button {
+  margin: 0 0.5rem;
+  padding: 0 0.7rem;
+  border: 1px solid white;
+  background-color: transparent;
+  box-shadow: 2px 2px 2px black;
+  color: white;
+}
+.product_pages_pagination_button_div button:active {
+  transform: scale(0.95);
+}
