@@ -9,7 +9,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 let WeaponCard = (props) => {
-  let { name, description, price, isGettingSelledByUser } = props.data;
+  let { name, description, price, isGettingSelledByUser, imageURL } =
+    props.data;
 
   let cartData = useSelector((state) => state.cartData);
   let userData = useSelector((state) => state.userData);
@@ -36,7 +37,7 @@ let WeaponCard = (props) => {
 
   return (
     <Card className="weaponCard">
-      <CardCarousel data={{ name, isGettingSelledByUser }} />
+      <CardCarousel data={{ name, isGettingSelledByUser, imageURL }} />
       <Card.Body className="weaponCardBody">
         <Card.Title className="weaponCardTitle">{name}</Card.Title>
         <Card.Text className="weaponCardDescription">{description}</Card.Text>

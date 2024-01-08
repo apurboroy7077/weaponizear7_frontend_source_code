@@ -1,0 +1,167 @@
+.more_products_from_server_text {
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px black;
+}
+.more_products_hr {
+  margin-top: 3px;
+  margin-bottom: 5px;
+}
+.weapon_card_2_container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem;
+  gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.weapon_card_2 {
+  width: 3.5rem;
+  border: 0.001rem solid white;
+  transition: transform 0.5s;
+}
+.weapon_card_2:hover {
+  transform: translateY(-2px);
+}
+.weapon_card_2_text_div {
+  padding: 2px;
+}
+.weapon_card_2_image_div {
+  width: 100%;
+  height: 2rem;
+}
+.weapon_card_2_image_div img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.weapon_card_2_name_div {
+  font-size: 0.25rem;
+}
+.weapon_card_2_price_div {
+  font-size: 0.25rem;
+}
+.weapon_card_2_description_div {
+  font-size: 0.2rem;
+  opacity: 0.6;
+}
+.weapon_card_2_add_to_cart_div {
+  font-size: 0.3rem;
+  text-align: center;
+  background-color: green;
+  padding: 0.1rem;
+  cursor: pointer;
+}
+.weapon_card_2_add_to_cart_div:active {
+  background-color: red;
+}
+@media (min-width: 500px) {
+  .more_products_from_server_text {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+  }
+  .more_products_hr {
+    margin-top: 3px;
+    margin-bottom: 5px;
+  }
+  .weapon_card_2_container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+  }
+  .weapon_card_2 {
+    width: 5rem;
+    border: 0.001rem solid white;
+    transition: transform 0.5s;
+  }
+  .weapon_card_2:hover {
+    transform: translateY(-2px);
+  }
+  .weapon_card_2_text_div {
+    padding: 2px;
+  }
+  .weapon_card_2_image_div {
+    width: 100%;
+    height: 4rem;
+  }
+  .weapon_card_2_image_div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .weapon_card_2_name_div {
+    font-size: 0.4rem;
+  }
+  .weapon_card_2_price_div {
+    font-size: 0.35rem;
+  }
+  .weapon_card_2_description_div {
+    font-size: 0.3rem;
+  }
+  .weapon_card_2_add_to_cart_div {
+    font-size: 0.4rem;
+    text-align: center;
+    background-color: green;
+    padding: 0.1rem;
+  }
+}
+@media (min-width: 1000px) {
+  .more_products_from_server_text {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.2rem;
+  }
+  .more_products_hr {
+    margin-top: 3px;
+    margin-bottom: 5px;
+  }
+  .weapon_card_2_container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0.5rem;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+  }
+  .weapon_card_2 {
+    width: 11rem;
+    border: 0.001rem solid white;
+    transition: transform 0.5s;
+    box-shadow: 3px 3px 3px black;
+  }
+  .weapon_card_2:hover {
+    transform: translateY(-5px);
+  }
+  .weapon_card_2_text_div {
+    padding: 3px;
+  }
+  .weapon_card_2_image_div {
+    width: 100%;
+    height: 7rem;
+  }
+  .weapon_card_2_image_div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .weapon_card_2_name_div {
+    font-size: 1.2rem;
+  }
+  .weapon_card_2_price_div {
+    font-size: 1rem;
+  }
+  .weapon_card_2_description_div {
+    font-size: 0.8rem;
+  }
+  .weapon_card_2_add_to_cart_div {
+    font-size: 0.9rem;
+    text-align: center;
+    background-color: green;
+    padding: 0.2rem;
+  }
+}

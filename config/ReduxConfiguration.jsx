@@ -70,6 +70,8 @@ let initialState = {
     },
   ],
   wishList: [],
+  productsDataFromServer: [],
+  totalNumberOfProducts: 0,
 };
 let reducer = (state = initialState, action) => {
   if (action.type == "LOGIN") {
@@ -86,7 +88,6 @@ let reducer = (state = initialState, action) => {
     };
     return newState;
   } else if (action.type == "ADD_TO_CART") {
-    console.log(action.payload);
     let myCart = [...state.cartData];
     let addedItem = action.payload;
     addedItem = { ...addedItem, quantity: 1 };
@@ -185,6 +186,27 @@ let reducer = (state = initialState, action) => {
     let newState = {
       ...state,
       wishList: newWishList,
+    };
+    return newState;
+  } else if (action.type == "UPDATE_TOTAL_NUMBER_OF_PRODUCTS") {
+    let totalNumberOfProducts_ = action.payload;
+    let newState = {
+      ...state,
+      totalNumberOfProducts: totalNumberOfProducts_,
+    };
+    return newState;
+  } else if (action.type == "UPDATE_PRODUCTS_DATA_FOR_PAGINATION") {
+    let newProductsData = action.payload;
+    let newState = {
+      ...state,
+      productData: newProductsData,
+    };
+    return newState;
+  } else if (action.type == "UPDATE_PRODUCTS_DATA_FROM_SERVER") {
+    let newProductsDataFromServer = action.payload;
+    let newState = {
+      ...state,
+      productsDataFromServer: newProductsDataFromServer,
     };
     return newState;
   } else {

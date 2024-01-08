@@ -46,10 +46,12 @@ const UploadProduct = () => {
     myFormData.append("productPrice", price);
     myFormData.append("productDescription", description);
     setSubmitLoading(true);
+    let authToken = localStorage.getItem("WeaponizeAR7");
     axios
       .post(`${serverURL}/api/product/upload_product`, myFormData, {
         headers: {
           "Content-Type": "multipart/form-data",
+          Authorization: authToken,
         },
       })
       .then((response) => {

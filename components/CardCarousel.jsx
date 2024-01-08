@@ -10,7 +10,7 @@ import { serverURL } from "../config/Variables";
 let CardCarousel = (props) => {
   // let name = props.data.toLowerCase();
   let { name } = props.data;
-  let { isGettingSelledByUser } = props.data;
+  let { isGettingSelledByUser, imageURL } = props.data;
   let originalName = name;
   name = name.toLowerCase();
   let [image1, setImage1] = useState(null);
@@ -51,7 +51,7 @@ let CardCarousel = (props) => {
         <Carousel.Item>
           {!imageError && (
             <img
-              src={`${serverURL}/images/products/${originalName}.jpg`}
+              src={`${imageURL}`}
               className="cardImage"
               onError={() => {
                 setImageError(true);
