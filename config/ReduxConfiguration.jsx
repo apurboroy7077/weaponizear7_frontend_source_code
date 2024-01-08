@@ -70,6 +70,7 @@ let initialState = {
     },
   ],
   wishList: [],
+  productsDataFromServer: [],
   totalNumberOfProducts: 0,
 };
 let reducer = (state = initialState, action) => {
@@ -199,6 +200,13 @@ let reducer = (state = initialState, action) => {
     let newState = {
       ...state,
       productData: newProductsData,
+    };
+    return newState;
+  } else if (action.type == "UPDATE_PRODUCTS_DATA_FROM_SERVER") {
+    let newProductsDataFromServer = action.payload;
+    let newState = {
+      ...state,
+      productsDataFromServer: newProductsDataFromServer,
     };
     return newState;
   } else {

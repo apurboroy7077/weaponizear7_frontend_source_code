@@ -47,20 +47,7 @@ let MyNavbar = () => {
         .catch((error) => {
           console.log(error);
         });
-      axios
-        .post(
-          `${serverURL}/api/product/get_total_number_of_products_selled_by_users`
-        )
-        .then((res) => {
-          let totalProducts = res.data.totalProducts;
-          dispatch({
-            type: "UPDATE_TOTAL_NUMBER_OF_PRODUCTS",
-            payload: totalProducts,
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+
       axios
         .post(`${serverURL}/api/product/get_products_selled_by_user`)
         .then((response) => {
@@ -73,6 +60,20 @@ let MyNavbar = () => {
           console.log(error);
         });
     }
+    axios
+      .post(
+        `${serverURL}/api/product/get_total_number_of_products_selled_by_users`
+      )
+      .then((res) => {
+        let totalProducts = res.data.totalProducts;
+        dispatch({
+          type: "UPDATE_TOTAL_NUMBER_OF_PRODUCTS",
+          payload: totalProducts,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     let savedCartData = JSON.parse(localStorage.getItem("WeaponizeAR7_Cart"));
     if (savedCartData) {
       if (savedCartData.length > 0) {
