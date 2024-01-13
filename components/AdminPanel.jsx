@@ -15,6 +15,7 @@ const AdminPanel = () => {
   let [targetedEmail, setTargetedEmail] = useState(null);
   let [loadingTotalUsers, setLoadingTotalUsers] = useState(true);
   let [loadingTotalOrders, setLoadingTotalOrders] = useState(true);
+  let [loadingAllUsers, setLoadingAllUsers] = useState(false);
   useEffect(() => {
     axios
       .post(`${serverURL}/api/admin/get_total_users_number`)
@@ -47,6 +48,20 @@ const AdminPanel = () => {
       })
       .catch((error) => {
         setSearching(false);
+        console.log(error);
+      });
+  };
+  let handleSeeAllUser = () => {
+    let emptyString = "";
+    setLoadingAllUsers(true);
+    axios
+      .post(`${serverURL}/api/admin/search_user`, { emptyString })
+      .then((res) => {
+        setFoundUser(res.data.userData);
+        setLoadingAllUsers(false);
+      })
+      .catch((error) => {
+        setLoadingAllUsers(false);
         console.log(error);
       });
   };
@@ -173,6 +188,38 @@ const AdminPanel = () => {
             Searching <i className="fa-solid fa-spinner fa-spin" />
           </button>
         )}
+        {!loadingAllUsers && (
+          <button
+            style={{
+              padding: "10px",
+              backgroundColor: "#555",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              marginLeft: "5px",
+            }}
+            onClick={handleSeeAllUser}
+          >
+            See All Users
+          </button>
+        )}
+        {loadingAllUsers && (
+          <button
+            style={{
+              padding: "10px",
+              backgroundColor: "#555",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+              marginLeft: "5px",
+            }}
+          >
+            See All Users <i className="fa-solid fa-spinner fa-spin" />
+          </button>
+        )}
+
         <ul style={{ listStyle: "none", padding: "0" }}>
           <li style={{ marginTop: "10px" }}>
             {foundUser.map((data) => {
